@@ -23,6 +23,9 @@ we have used version 17.0.0.
 + create a user account for administrating keycloak. e.g. username : admin, password : Secret
 
 ## importing realm : ldap-realm
-Keycloak uses the concept of realms as kind of tenants. we should create a realm by importing from [ldaprealm.json](ldaprealm.json) file provided in this repository 
+Keycloak uses the concept of realms as kind of tenants. we should create a realm by importing from file provided in this repository 
++ click ```Add realm``` button 
++ select  [ldaprealm.json](ldaprealm.json) file
++ set realm name : ldap-realm
 
 
