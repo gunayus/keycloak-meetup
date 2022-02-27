@@ -27,5 +27,5 @@ Keycloak uses the concept of realms as kind of tenants. we should create a realm
 + click ```Add realm``` button 
 + select  [ldaprealm.json](ldaprealm.json) file
 + set realm name : ldap-realm
-
++ see schreen shot![](doc/01_import-realm.png) 
 
