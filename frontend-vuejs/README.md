@@ -1,5 +1,11 @@
 # keycloak-meetup frontend project
 
+## Create Project
+```
+npm install -g @vue/cli
+vue create hello-world
+```
+
 ## Keycloak Setup & Client Configuration
 - Add Keycloak dependency to package.json
 - Import keycloak.js to main.js
