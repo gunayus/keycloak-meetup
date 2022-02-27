@@ -18,7 +18,10 @@ we have used version 17.0.0.
 + download the package via https://github.com/keycloak/keycloak/releases/download/17.0.0/keycloak-17.0.0.zip
 + extract the package 
 + run following command ```./bin/kc.sh start-dev```
++ this should start keycloak in development mode at port 8080
++ open http://localhost:8080
++ create a user account for administrating keycloak. e.g. username : admin, password : Secret
 
-this should start keycloak in development mode
+
 
 
