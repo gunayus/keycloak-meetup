@@ -36,7 +36,8 @@ const keycloak = Keycloak(initOptions)
 keycloak.init({onLoad: 'login-required'}).then(() => {
 
     store.commit('setUserName',keycloak.tokenParsed.preferred_username)
-    store.commit('setKeycloakToken',keycloak.tokenParsed)
+    store.commit('setKeycloakToken',keycloak.token)
+    store.commit('setKeycloakTokenParsed',keycloak.tokenParsed)
 
     emitter.on('keycloak-logout', () => {
         keycloak.logout()
@@ -49,7 +50,9 @@ keycloak.init({onLoad: 'login-required'}).then(() => {
             .then((refreshed) => {
                 if (refreshed) {
                     store.commit('setUserName',keycloak.tokenParsed.preferred_username)
-                    store.commit('setKeycloakToken',keycloak.tokenParsed)
+                    store.commit('setKeycloakToken',keycloak.token)
+                    store.commit('setKeycloakTokenParsed',keycloak.tokenParsed)
+
                     console.info('Token refreshed' + refreshed)
                 } else {
                     console.warn('Token not refreshed, valid for ' + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds')

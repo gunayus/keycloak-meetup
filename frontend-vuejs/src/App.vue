@@ -3,7 +3,7 @@
   <h3>{{ 'username:' + username }}</h3>
   <button @click="logout"> Logout</button>
   <h1>Keycloak Token</h1>
-  <json-viewer :value="keycloakToken" copyable boxed sort/>
+  <json-viewer :value="keycloakTokenParsed" copyable boxed sort/>
   <h1>Backend Token</h1>
   <button @click="getBackendTokenInfo"> Auth Token Info</button>
   <json-viewer :value="backendToken" copyable boxed sort/>
@@ -22,7 +22,8 @@ export default {
   computed: {
     ...mapGetters({
       username: 'username',
-      keycloakToken: 'keycloakToken'
+      keycloakToken: 'keycloakToken',
+      keycloakTokenParsed: 'keycloakTokenParsed'
     })
   },
   methods: {
@@ -30,7 +31,12 @@ export default {
       this.emitter.emit('keycloak-logout')
     },
     getBackendTokenInfo() {
-      this.axios.get("http://localhost:8070/demo/auth-token-info").then((response) => {
+      const config = {
+        headers:{
+          Authorization: `Bearer ${this.keycloakToken}`
+        }
+      }
+      this.axios.get("/demo/auth-token-info", config).then((response) => {
         this.backendToken = response.data
       })
     }

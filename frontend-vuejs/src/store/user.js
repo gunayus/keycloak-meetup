@@ -4,7 +4,8 @@ const store = createStore({
     state () {
         return {
             username:null,
-            keycloakToken:null
+            keycloakToken:null,
+            keycloakTokenParsed:null,
         }
     },
     mutations: {
@@ -14,6 +15,9 @@ const store = createStore({
         setKeycloakToken(state, val) {
             state.keycloakToken = val
         },
+        setKeycloakTokenParsed(state, val) {
+            state.keycloakTokenParsed = val
+        },
     },
     getters: {
         username(state) {
@@ -21,6 +25,9 @@ const store = createStore({
         },
         keycloakToken(state) {
             return state.keycloakToken
+        },
+        keycloakTokenParsed(state) {
+            return state.keycloakTokenParsed
         }
     }
 })
