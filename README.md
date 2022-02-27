@@ -9,4 +9,16 @@ Keycloak provides user federation, strong authentication, user management, fine-
 
 for details and new versions, please visit https://www.keycloak.org/
 
+## installing keycloak
+
+for the sake of simplicity, we will use the development version of keycloak, you can simply download the keycloak from following address https://www.keycloak.org/downloads
+
+we have used version 17.0.0. 
+
++ download the package via https://github.com/keycloak/keycloak/releases/download/17.0.0/keycloak-17.0.0.zip
++ extract the package 
++ run following command ```./bin/kc.sh start-dev```
+
+this should start keycloak in development mode
+
 
