@@ -52,3 +52,20 @@ once the LDAP service is running, go back to keycloak realm configuration page t
 + click ```Test connection``` and ```Test authentication``` buttons to make sure that LDAP service can be connected without any issues. ![](doc/02_realm_ldap_test_connection.png)
 + if connected and authenticated successfully in previous step, click on ```Syncronize all users``` button. see imported users from ldap. ![](doc/03_synchroniza_all_users.png)
 + click ```Users``` from the left action buttons and view two users imported from LDAP. ![](doc/04_users.png)
+
+## importing user groups from LDAP 
+in order to import user groups from LDAP, we need to define a mapper for user federation
++ click ```User Federation``` from the left action buttons
++ click ```ldap-apacheds``` to open details 
++ open ```Mappers``` tab and click ```Create``` button
++ enter following values 
+  + Name : LDAP Group mapper
+  + Mapper Type : group-ldap-mapper
+  + LDAP Groups DN : ou=UserRoles,dc=keycloak,dc=org
+  + Drop non-existing groups during sync : ON
++ click Save button and then click ```Synchronize LDAP groups to Keycloak``` button.  ![](doc/06_synchronize_ldap_groups.png)
++ click ```Groups``` from the left action buttons and see that two groups are fetched from LDAP
+  + normalUsers - having member : [jbrown]
+  + superUsers - having member : [bwilson]
+
+
