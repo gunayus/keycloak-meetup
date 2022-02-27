@@ -28,4 +28,19 @@ Keycloak uses the concept of realms as kind of tenants. we should create a realm
 + select  [ldaprealm.json](ldaprealm.json) file
 + set realm name : ldap-realm
 + see schreen shot![](doc/01_import-realm.png) 
++ click ```Create``` button 
+
+## running LDAP service
+in the scope of this demo, we will use LDAP as authentication manager and authorizing users / groups. therefore an LDAP server should be used. you can use any one of LDAP service
++ Apache DS
++ Redhat freeipa
++ Active Directory
++ etc. 
+
+for simplicity, we will start LDAP service from keycloak source code. 
++ download keycloak source code from this url : https://github.com/keycloak/keycloak/archive/refs/tags/17.0.0.zip
++ extract the zip content
++ overwrite the ldap source file ```ldap-example-users.ldif``` from this repository to ```examples/ldap``` folder in keycloak source code. this modified file contains additional groups and group memberships
++ follow the instructions from the file ```README.md``` in folder  ```examples/ldap``` to start the LDAP service
++ in short you should be able to run following command ```mvn exec:java -Pldap```
 
