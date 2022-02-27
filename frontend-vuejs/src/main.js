@@ -4,7 +4,7 @@ import Keycloak from 'keycloak-js'
 
 const app = createApp(App);
 
-// JSONVIEWER
+// JSON VIEWER
 import JsonViewer from "vue3-json-viewer";
 import "vue3-json-viewer/dist/index.css";
 app.use(JsonViewer);
@@ -18,6 +18,13 @@ app.config.globalProperties.emitter = emitter;
 import store from "@/store/user";
 app.use(store)
 
+// AXIOS
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+app.use(VueAxios, axios)
+
+
+// KEYCLOAK
 const initOptions = {
     url: process.env.VUE_APP_KEYCLOAK_API_URL,
     realm: process.env.VUE_APP_KEYCLOAK_REALM,
@@ -29,10 +36,7 @@ const keycloak = Keycloak(initOptions)
 keycloak.init({onLoad: 'login-required'}).then(() => {
 
     store.commit('setUserName',keycloak.tokenParsed.preferred_username)
-    store.commit('setKeycloakJsonData',keycloak.tokenParsed)
-
-    console.log('-------------keycloak token-------------')
-    console.log(keycloak.tokenParsed)
+    store.commit('setKeycloakToken',keycloak.tokenParsed)
 
     emitter.on('keycloak-logout', () => {
         keycloak.logout()
@@ -45,7 +49,7 @@ keycloak.init({onLoad: 'login-required'}).then(() => {
             .then((refreshed) => {
                 if (refreshed) {
                     store.commit('setUserName',keycloak.tokenParsed.preferred_username)
-                    store.commit('setKeycloakJsonData',keycloak.tokenParsed)
+                    store.commit('setKeycloakToken',keycloak.tokenParsed)
                     console.info('Token refreshed' + refreshed)
                 } else {
                     console.warn('Token not refreshed, valid for ' + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds')

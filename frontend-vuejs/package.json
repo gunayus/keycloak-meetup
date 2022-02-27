@@ -13,6 +13,7 @@
     "keycloak-js": "^17.0.0",
     "mitt": "^3.0.0",
     "vue": "^3.2.13",
+    "vue-axios": "^3.4.1",
     "vue3-json-viewer": "^2.1.0"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "axios": "^0.26.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "vuex": "^4.0.2"

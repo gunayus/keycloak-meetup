@@ -4,23 +4,23 @@ const store = createStore({
     state () {
         return {
             username:null,
-            keycloakJsonData:null
+            keycloakToken:null
         }
     },
     mutations: {
         setUserName(state, val) {
             state.username = val
         },
-        setKeycloakJsonData(state, val) {
-            state.keycloakJsonData = val
+        setKeycloakToken(state, val) {
+            state.keycloakToken = val
         },
     },
     getters: {
         username(state) {
             return state.username
         },
-        keycloakJsonData(state) {
-            return state.keycloakJsonData
+        keycloakToken(state) {
+            return state.keycloakToken
         }
     }
 })
