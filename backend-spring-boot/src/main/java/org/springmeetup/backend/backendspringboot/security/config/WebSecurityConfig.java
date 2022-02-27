@@ -1,4 +1,4 @@
-package org.springmeetup.backend.backendspringboot.security;
+package org.springmeetup.backend.backendspringboot.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -16,15 +16,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final ApiSecurityContextRepository apiSecurityContextRepository;
 
 	public static final String[] WHITE_LIST = {
-			"/user/login",
-			"/user/application/list",
 			"/actuator/health",
 			"/v2/api-docs",
-			"/configuration/ui",
-			"/configuration/security",
 			"/swagger-resources/**",
-			"/swagger-ui.html*",
-			"/webjars/**"
+			"/swagger-ui.html*"
 	};
 
 	@Override

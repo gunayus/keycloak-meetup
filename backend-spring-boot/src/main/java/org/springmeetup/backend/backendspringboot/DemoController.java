@@ -2,16 +2,15 @@ package org.springmeetup.backend.backendspringboot;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springmeetup.backend.backendspringboot.security.AuthenticatedUser;
+import org.springmeetup.backend.backendspringboot.security.model.AuthenticatedUser;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -37,4 +36,17 @@ public class DemoController {
 
 		return responseBody;
 	}
+
+	@GetMapping(value = "/do-super-things")
+	@PreAuthorize("hasRole('ROLE_SUPER_USER')")
+	public String doSuperThings() {
+		return "OK - super user operation is allowed";
+	}
+
+	@GetMapping(value = "/do-normal-things")
+	@PreAuthorize("hasRole('ROLE_NORMAL_USER')")
+	public String doNormalThings() {
+		return "OK - normal user operation is allowed";
+	}
+
 }

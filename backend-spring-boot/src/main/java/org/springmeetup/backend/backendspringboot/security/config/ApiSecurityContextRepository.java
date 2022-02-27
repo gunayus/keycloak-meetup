@@ -1,4 +1,4 @@
-package org.springmeetup.backend.backendspringboot.security;
+package org.springmeetup.backend.backendspringboot.security.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,8 @@ import org.springframework.security.web.context.HttpRequestResponseHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import org.springmeetup.backend.backendspringboot.security.exception.UnauthorizedException;
+import org.springmeetup.backend.backendspringboot.security.model.AuthenticatedUser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -111,7 +113,6 @@ public class ApiSecurityContextRepository implements SecurityContextRepository {
 		return AuthenticatedUser.builder()
 				.username(username)
 				.clientName(clientName)
-				.token(keycloakJwtToken)
 				.realmRoleSet(realmRoleSet)
 				.resourceRoleSet(clientResourceRoleSet)
 				.build();

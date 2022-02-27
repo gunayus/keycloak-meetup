@@ -1,4 +1,4 @@
-package org.springmeetup.backend.backendspringboot.security;
+package org.springmeetup.backend.backendspringboot.security.exception;
 
 public class UnauthorizedException extends RuntimeException {
 

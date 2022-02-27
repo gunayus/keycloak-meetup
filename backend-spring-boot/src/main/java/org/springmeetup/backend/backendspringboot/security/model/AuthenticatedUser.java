@@ -1,4 +1,4 @@
-package org.springmeetup.backend.backendspringboot.security;
+package org.springmeetup.backend.backendspringboot.security.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +15,6 @@ public class AuthenticatedUser {
 
 	private String username;
 	private String clientName;
-	private String token;
 
 	private Set<String> realmRoleSet;
 	private Set<String> resourceRoleSet;

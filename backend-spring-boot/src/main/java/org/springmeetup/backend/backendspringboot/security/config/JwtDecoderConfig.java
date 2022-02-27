@@ -1,4 +1,4 @@
-package org.springmeetup.backend.backendspringboot.security;
+package org.springmeetup.backend.backendspringboot.security.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
