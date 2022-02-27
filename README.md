@@ -40,7 +40,7 @@ in the scope of this demo, we will use LDAP as authentication manager and author
 for simplicity, we will start LDAP service from keycloak source code. 
 + download keycloak source code from this url : https://github.com/keycloak/keycloak/archive/refs/tags/17.0.0.zip
 + extract the zip content
-+ overwrite the ldap source file ```ldap-example-users.ldif``` from this repository to ```examples/ldap``` folder in keycloak source code. this modified file contains additional groups and group memberships
++ overwrite the ldap source file [```ldap-example-users.ldif```](ldap-example-users.ldif) from this repository to ```examples/ldap``` folder in keycloak source code. this modified file contains additional groups and group memberships
 + follow the instructions from the file ```README.md``` in folder  ```examples/ldap``` to start the LDAP service
 + in short you should be able to run following command ```mvn exec:java -Pldap```
 
