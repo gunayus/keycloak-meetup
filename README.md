@@ -44,3 +44,11 @@ for simplicity, we will start LDAP service from keycloak source code.
 + follow the instructions from the file ```README.md``` in folder  ```examples/ldap``` to start the LDAP service
 + in short you should be able to run following command ```mvn exec:java -Pldap```
 
+## test LDAP connection from keyclaok 
+once the LDAP service is running, go back to keycloak realm configuration page to test the connection
++ select realm ```ldap-realm``` if not already selected
++ click ```User Federation``` from the left action buttons
++ click ```ldap-apacheds``` to open details
++ click ```Test connection``` and ```Test authentication``` buttons to make sure that LDAP service can be connected without any issues. ![](doc/02_realm_ldap_test_connection.png)
++ if connected and authenticated successfully in previous step, click on ```Syncronize all users``` button. see imported users from ldap. ![](doc/03_synchroniza_all_users.png)
++ click ```Users``` from the left action buttons and view two users imported from LDAP. ![](doc/04_users.png)
