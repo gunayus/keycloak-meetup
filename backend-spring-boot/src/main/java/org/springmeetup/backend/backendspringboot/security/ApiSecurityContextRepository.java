@@ -47,8 +47,13 @@ public class ApiSecurityContextRepository implements SecurityContextRepository {
 			} else {
 				List<SimpleGrantedAuthority> grantedAuthorityList = new ArrayList<>();
 				grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_API_USER"));
-				if (authenticatedUser.getRolesSet() != null) {
-					authenticatedUser.getRolesSet().forEach(roleName -> grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_" + roleName)));
+
+				if (authenticatedUser.getRealmRoleSet() != null) {
+					authenticatedUser.getRealmRoleSet().forEach(roleName -> grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_" + roleName)));
+				}
+
+				if (authenticatedUser.getResourceRoleSet() != null) {
+					authenticatedUser.getResourceRoleSet().forEach(roleName -> grantedAuthorityList.add(new SimpleGrantedAuthority("ROLE_" + roleName)));
 				}
 
 				Authentication authenticated = new UsernamePasswordAuthenticationToken(
@@ -131,7 +136,7 @@ public class ApiSecurityContextRepository implements SecurityContextRepository {
 			Map<String, Object> resourceAccessClaimsMap = jwtDecoded.getClaimAsMap("resource_access");
 			if (!CollectionUtils.isEmpty(resourceAccessClaimsMap)) {
 				Map<String, Object> clientResourceAcessClaimsMap = (Map) resourceAccessClaimsMap.get(clientName);
-				if (clientResourceAcessClaimsMap.get("roles") != null) {
+				if (clientResourceAcessClaimsMap != null && clientResourceAcessClaimsMap.get("roles") != null) {
 					rolesSet.addAll((List)clientResourceAcessClaimsMap.get("roles"));
 				}
 			}

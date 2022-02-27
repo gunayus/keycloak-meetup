@@ -17,7 +17,6 @@ public class AuthenticatedUser {
 	private String clientName;
 	private String token;
 
-	private Set<String> rolesSet;
 	private Set<String> realmRoleSet;
 	private Set<String> resourceRoleSet;
 

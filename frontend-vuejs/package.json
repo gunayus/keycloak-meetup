@@ -10,7 +10,7 @@
   "dependencies": {
     "clipboard": "^2.0.10",
     "core-js": "^3.8.3",
-    "keycloak-js": "^15.0.2",
+    "keycloak-js": "^17.0.0",
     "mitt": "^3.0.0",
     "vue": "^3.2.13",
     "vue3-json-viewer": "^2.1.0"
