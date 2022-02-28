@@ -49,5 +49,5 @@ keycloak.loadUserProfile()
 ```
 cd frontend-vuejs
 npm install
-VUE_APP_KEYCLOAK_API_URL=#KEYCLOAK_API_URL# VUE_APP_KEYCLOAK_REALM=#KEYCLOAK_REALM# VUE_APP_KEYCLOAK_CLIENT_ID=#KEYCLOAK_CLIENT_ID# npm run serve
+npm run serve
 ```

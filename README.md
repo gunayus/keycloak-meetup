@@ -22,11 +22,11 @@ we have used version 17.0.0.
 + open http://localhost:8080
 + create a user account for administrating keycloak. e.g. username : admin, password : Secret
 
-## importing realm : ldap-realm
+## importing realm : ldap-demo
 Keycloak uses the concept of realms as kind of tenants. we should create a realm by importing from file provided in this repository 
 + click ```Add realm``` button 
 + select  [ldaprealm.json](ldaprealm.json) file
-+ set realm name : ldap-realm
++ set realm name : ldap-demo
 + see schreen shot![](doc/01_import-realm.png) 
 + click ```Create``` button 
 
@@ -46,14 +46,14 @@ for simplicity, we will start LDAP service from keycloak source code.
 
 ## test LDAP connection from keyclaok 
 once the LDAP service is running, go back to keycloak realm configuration page to test the connection
-+ select realm ```ldap-realm``` if not already selected
++ select realm ```ldap-demo``` if not already selected
 + click ```User Federation``` from the left action buttons
 + click ```ldap-apacheds``` to open details
 + click ```Test connection``` and ```Test authentication``` buttons to make sure that LDAP service can be connected without any issues. ![](doc/02_realm_ldap_test_connection.png)
 + if connected and authenticated successfully in previous step, click on ```Syncronize all users``` button. see imported users from ldap. ![](doc/03_synchroniza_all_users.png)
 + click ```Users``` from the left action buttons and view two users imported from LDAP. ![](doc/04_users.png)
 
-## importing user groups from LDAP 
+## import user groups from LDAP 
 in order to import user groups from LDAP, we need to define a mapper for user federation
 + click ```User Federation``` from the left action buttons
 + click ```ldap-apacheds``` to open details 
@@ -67,5 +67,25 @@ in order to import user groups from LDAP, we need to define a mapper for user fe
 + click ```Groups``` from the left action buttons and see that two groups are fetched from LDAP
   + normalUsers - having member : [jbrown]
   + superUsers - having member : [bwilson]
+  
+## create client : demo-client
+for authentication & authorization operations we will define a new client : demo-client. 
++ click ```Clients``` from the left action buttons
++ click ```Create``` button and fill in the form
+  + Client ID : demo-client
+  + Client Protocol : openid-connect
++ cick ```Save``` button
+
+in the Demo-client page, simply provide following values and save the changes
++ Valid Redirect URIs : *
++ Web Origins : *
+
+## authentication from Postman
+a Postman collection file [Keycloak Meetup.postman_collection.json](Keycloak%20Meetup.postman_collection.json) is provided in this repository, go ahead and import this collection in your Postman. after importing the collection, try to run the two keyclaok authentication requests
++ v17.0 - Authenticate - bwilson - SUPER_USER
++ v17.0 - Authenticate - jbrown - NORMAL_USER
+
+you should be able to get a successfull response from Keycloak with valid jwt token and refresh token 
+
 
 

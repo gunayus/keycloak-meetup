@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "f4147d7f-6ce7-4021-9863-d54d95775468",
+		"name": "Keycloak Meetup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v17.0 - Authenticate - bwilson - SUPER_USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"jwt-token-keycloak\", pm.response.json().access_token);",
+							"pm.environment.set(\"refresh-token-keycloak\", pm.response.json().refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "bwilson",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "demo-client",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/ldap-demo/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"ldap-demo",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "v17.0 - Authenticate - jbrown - NORMAL_USER",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"jwt-token-keycloak\", pm.response.json().access_token);",
+							"pm.environment.set(\"refresh-token-keycloak\", pm.response.json().refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "jbrown",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "demo-client",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/realms/ldap-demo/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"realms",
+						"ldap-demo",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Auth details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt-token-keycloak}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8070/demo/auth-token-info",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8070",
+					"path": [
+						"demo",
+						"auth-token-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DO Super things",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt-token-keycloak}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8070/demo/do-super-things",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8070",
+					"path": [
+						"demo",
+						"do-super-things"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DO Normal things",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt-token-keycloak}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8070/demo/do-normal-things",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8070",
+					"path": [
+						"demo",
+						"do-normal-things"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
