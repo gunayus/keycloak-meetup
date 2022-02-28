@@ -76,9 +76,9 @@ for authentication & authorization operations we will define a new client : demo
   + Client Protocol : openid-connect
 + cick ```Save``` button
 
-in the Demo-client page, simply provide following values and save the changes
-+ Valid Redirect URIs : *
-+ Web Origins : *
+in the Demo-client page, simply provide following values and save the changes. since this demo aims to keep things simple, we'll just use URIs including ```localhost:3000```
++ Valid Redirect URIs : http://localhost:3000/
++ Web Origins : http://localhost:3000
 
 ## authentication from Postman
 a Postman collection file [Keycloak Meetup.postman_collection.json](Keycloak%20Meetup.postman_collection.json) is provided in this repository, go ahead and import this collection in your Postman. after importing the collection, try to run the two keyclaok authentication requests
