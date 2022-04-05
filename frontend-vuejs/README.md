@@ -8,6 +8,10 @@ vue create hello-world
 
 ## Keycloak Setup & Client Configuration
 - Add Keycloak dependency to package.json
+```
+npm i keycloak-js
+```
+
 - Import keycloak.js to main.js
 ```
 import Keycloak from 'keycloak-js'
@@ -50,4 +54,13 @@ keycloak.loadUserProfile()
 cd frontend-vuejs
 npm install
 npm run serve
+```
+
+### Custom Login Page
+```
+copy login folder 
+from https://github.com/keycloak/keycloak/tree/main/themes/src/main/resources/theme/keycloak
+to ./keycloak-17.0.0/themes/{custom}
+
+run keycloak with  'bin/kc.sh start-dev' command
 ```
